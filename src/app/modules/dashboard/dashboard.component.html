@@ -1,0 +1,57 @@
+<div class="dashboard-container" *ngIf="envs">
+  <div fxFlex="48">
+      <div fxLayout="row">
+          <mat-card id="app-env-overview-card">
+            <mat-card-header id="app-env-overview-header">
+              <mat-card-title class="header-text body-primary-heading">
+                Enviroments
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content id="app-env-overview-content">
+              <app-envs-overview [(envs)]="envs"></app-envs-overview>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <br>
+        <div fxLayout="row">
+          <mat-card id="app-server-overview-card">
+            <mat-card-header id="app-server-overview-header">
+              <mat-card-title class="header-text body-primary-heading">
+                Servers
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content id="app-server-overview-content" *ngIf="serverStartedList.length!==0 && serverCredicalList!==0">
+              <app-pie-chart [(startedList)]="serverStartedList" [(credicalList)]="serverCredicalList"></app-pie-chart>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <br>
+        <div fxLayout="row">
+          <mat-card id="app-applications-overview-card">
+            <mat-card-header id="app-applications-overview-header">
+              <mat-card-title class="header-text body-primary-heading">
+                Applications
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content id="app-applications-overview-content" *ngIf="appStartedList.length!==0 && appCredicalList!==0">
+              <app-pie-chart [(startedList)]="appStartedList" [(credicalList)]="appCredicalList"></app-pie-chart>
+            </mat-card-content>
+          </mat-card>
+        </div>
+     
+  </div>
+     
+
+    <div fxFlex="48" fxFlexOffset="2">
+      <mat-card id="app-status-report-card">
+        <mat-card-header id="app-status-report-header">
+          <mat-card-title class="header-text body-primary-heading">
+            Status Report
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content id="app-status-report-content" *ngIf="envs.length>0">
+          <app-status-report [(envs)]="envs"></app-status-report>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

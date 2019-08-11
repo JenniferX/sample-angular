@@ -1,0 +1,48 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+$success:#51a351;
+$error:#bd362f;
+
+  body{
+      margin:0 !important;
+      background-color: #f4f7f8;
+  }
+
+  .hand-cursor {
+      cursor: pointer;
+  }
+
+  .selected {
+      opacity: 0.7
+  }
+  .icon-success{
+      color:$success;
+  }
+  .icon-error{
+      color:$error;
+  }
+  .success, .snack-success  {
+      background-color: $success !important;
+      color: white;
+  }
+
+  .error, .snack-error {
+    background-color: $error !important;
+    color: white;
+}
+.mat-card{
+    width: 95% !important;
+}
+
+.mat-chip.mat-standard-chip{
+    padding: 13px !important;
+    font-size:12px !important;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid white !important;
+}
+.mat-expansion-panel{
+    margin-top:2px !important;
+}

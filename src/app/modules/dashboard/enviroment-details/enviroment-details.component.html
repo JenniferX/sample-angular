@@ -1,0 +1,107 @@
+<h1 mat-dialog-title>Env Details</h1>
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <div fxLayout="row">
+      <div fxLayout="column" fxFlex="25">
+        <div>
+          <mat-card id="app-server-overview-card">
+            <mat-card-header id="app-server-overview-header">
+              <div class="mat-card-header-text">
+                <mat-card-title class="header-text body-primary-heading">Servers Overview
+                </mat-card-title>
+              </div>
+            </mat-card-header>
+            <mat-card-content id="app-server-overview-content">
+                <app-pie-chart [(startedList)]="serverStartedList" [(credicalList)]="serverCredicalList"></app-pie-chart>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+        <br>
+        <div>
+          <mat-card id="app-server-overview-card">
+            <mat-card-header id="app-server-overview-header">
+              <div class="mat-card-header-text">
+                <mat-card-title class="header-text body-primary-heading">Application Overview
+                </mat-card-title>
+              </div>
+            </mat-card-header>
+            <mat-card-content id="app-server-overview-content">
+                <app-pie-chart [(startedList)]="appStartedList" [(credicalList)]="appCredicalList"></app-pie-chart>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+
+      </div>
+      <div fxLayout="column" fxFlex="28" fxFlexOffset="3">
+        <mat-card id="server">
+          <mat-card-header>
+            <mat-card-title>Severs Information</mat-card-title>
+          </mat-card-header>
+          <mat-card-content id="server">
+              <div *ngFor="let server of data.envData.servers" >
+                  <mat-card id="server" [ngClass]="{'success': server.status==='STARTED','error':server.status==='DOWN','selected':serverName=== server.server}" >
+                    <mat-card-content id="server" (click)="displayAppInfo(server)"  class="hand-cursor">
+                      <div fxFlex="100">
+                        {{server.server}}
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                  <br>
+                </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+
+      <div fxLayout="column"fxFlex="40" fxFlexOffset="3">
+          <mat-card id="server">
+              <mat-card-header>
+                <mat-card-title>Applications Information ({{serverName}})</mat-card-title>
+              </mat-card-header>
+              <mat-card-content id="server">
+                
+                <table mat-table #table [dataSource]="dataSource" matSort>
+
+                    <!-- Name -->
+                    <ng-container  matColumnDef="name" >
+                      <mat-header-cell  fxFlex="70" mat-sort-header *matHeaderCellDef >
+                        <strong>Application Name</strong>
+                      </mat-header-cell>
+                      <mat-cell fxFlex="70" id="name-{{i}}" *matCellDef="let element;let i = index"> {{element.name}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- status -->
+                    <ng-container matColumnDef="status">
+                      <mat-header-cell fxFlex="30" mat-sort-header *matHeaderCellDef>
+                        <strong>Status</strong>
+                      </mat-header-cell>
+                      <mat-cell fxFlex="30" id="status-{{i}}" *matCellDef="let element;let i = index">
+                        
+                         <i class="material-icons icon-error" *ngIf="element.status==='FAILED'">
+                            mood_bad
+                        </i>
+                        <i class="material-icons icon-success" *ngIf="element.status==='STARTED'">
+                            sentiment_very_satisfied
+                        </i>
+                        </mat-cell>
+                    </ng-container>
+            
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  </table>
+  
+              </mat-card-content>
+            </mat-card>
+         
+      
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close cdkFocusInitial>Close</button>
+  </mat-dialog-actions>
+  
+

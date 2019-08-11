@@ -1,0 +1,34 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let env of envs; let i = index" [expanded] = "step === i" (opened) = "setStep(i)">
+    <br>
+    <mat-expansion-panel-header [ngClass] = "{'success': env.status === 'STARTED', 'error':env.status === 'DOWN'}">
+      <mat-panel-title>
+        {{env.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-expansion-panel *ngFor="let server of env.servers" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-chip fxFlex="20" color="default" [ngClass]="{'success': server.status === 'STARTED', 'error': server.status === 'DOWN'}">
+            {{server.status}} </mat-chip>
+            <p fxFlexOffset="5">
+              {{server.server}} ({{server.applications.length}})
+            </p>
+         
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list *ngIf="server.applications.length>0">
+        <mat-list-item *ngFor="let app of server.applications">
+          <label for="name" fxFlex="80">{{app.name}}</label>
+          <i class="material-icons icon-error" *ngIf = "app.status === 'FAILED'">mood_bad</i>
+          <i class="material-icons icon-success" *ngIf = "app.status === 'STARTED'">
+            sentiment_very_satisfied
+          </i>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+    <br>
+
+  </mat-expansion-panel>
+  <br>
+</mat-accordion>

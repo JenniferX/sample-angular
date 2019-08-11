@@ -1,0 +1,9 @@
+<div class="env-container" *ngIf="envs" >
+  <div class="env" *ngFor="let env of envs; let i=index">
+    <mat-card id="env" class="hand-cursor" (click)="openDialog(env)" [ngClass] = "{'success': env.status === 'STARTED','error': env.status === 'DOWN'}">
+      <mat-card-content id="env">
+        {{env.name}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

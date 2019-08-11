@@ -1,0 +1,13 @@
+.env-container{
+    width:100%;
+    flex-direction: row !important;
+    display: flex !important;
+    align-content: space-between;
+}
+.env{
+    width: 10%;
+    text-align: center;
+    margin: 10px 0px;
+    padding: 3%;
+    font-size: 13px;
+}

@@ -1,0 +1,16 @@
+i{
+    margin-right:10px;
+    padding-left:0px;
+    margin-left:0px;
+}
+
+.close-icon{
+    cursor: pointer;
+    font-size: 16px !important;
+    font-weight: 900;
+    margin-top: -5px;
+    &:hover{
+        color:black;
+        opacity:0.4;
+    }
+}
