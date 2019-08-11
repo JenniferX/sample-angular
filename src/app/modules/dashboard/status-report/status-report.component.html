@@ -9,7 +9,7 @@
     <mat-expansion-panel *ngFor="let server of env.servers" >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-chip fxFlex="20" color="default" [ngClass]="{'success': server.status === 'STARTED', 'error': server.status === 'DOWN'}">
+          <mat-chip fxFlex="25" color="default" [ngClass]="{'success': server.status === 'STARTED', 'error': server.status === 'DOWN'}">
             {{server.status}} </mat-chip>
             <p fxFlexOffset="5">
               {{server.server}} ({{server.applications.length}})

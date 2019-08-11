@@ -1,11 +1,11 @@
 .env-container{
     width:100%;
-    flex-direction: row !important;
     display: flex !important;
     align-content: space-between;
+    flex-wrap: wrap !important;
 }
 .env{
-    width: 10%;
+    max-width: 15%;
     text-align: center;
     margin: 10px 0px;
     padding: 3%;

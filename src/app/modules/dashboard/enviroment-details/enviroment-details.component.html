@@ -43,7 +43,7 @@
               <div *ngFor="let server of data.envData.servers" >
                   <mat-card id="server" [ngClass]="{'success': server.status==='STARTED','error':server.status==='DOWN','selected':serverName=== server.server}" >
                     <mat-card-content id="server" (click)="displayAppInfo(server)"  class="hand-cursor">
-                      <div fxFlex="100">
+                      <div fxFlex="95">
                         {{server.server}}
                       </div>
                     </mat-card-content>
